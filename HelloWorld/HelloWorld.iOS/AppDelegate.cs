@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Mobile;
+using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
 
 using Foundation;
 using UIKit;
@@ -22,7 +25,9 @@ namespace HelloWorld.iOS
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			global::Xamarin.Forms.Forms.Init ();
+            MobileCenter.Start("bdf2ef73-ae33-4b1f-a974-4423fde5cde0",
+                    typeof(Analytics), typeof(Crashes));
+            global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new HelloWorld.App ());
 
 			return base.FinishedLaunching (app, options);
